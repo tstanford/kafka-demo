@@ -1,0 +1,22 @@
+meta {
+  name: send
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8090/
+  body: json
+  auth: none
+}
+
+headers {
+  content-type: application/json
+}
+
+body:json {
+  {
+    "name": "Tim",
+    "age": "46"
+  }
+}
