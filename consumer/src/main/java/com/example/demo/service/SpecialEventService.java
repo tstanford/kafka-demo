@@ -14,7 +14,11 @@ public class SpecialEventService {
         this.specialMessageHandler = specialMessageHandler;
     }
 
-    @KafkaListener(topics = "special-message", properties = {"spring.json.value.default.type=com.example.demo.event.SpecialMessageEvent"})
+    @KafkaListener(
+            topics = "special-message",
+            properties = {"spring.json.value.default.type=com.example.demo.event.SpecialMessageEvent"},
+            groupId = "#{T(java.util.UUID).randomUUID().toString()}"
+    )
     public void retrieveSpecialMessage(SpecialMessageEvent message) {
         specialMessageHandler.handle(message);
     }
